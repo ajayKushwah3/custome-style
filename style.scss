@@ -1,0 +1,207 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+:root {
+    --font-family: "Averta-Demo-PE-Cutted-Demo";
+    --size-14: 14px;
+    --size-16: 16px;
+    --size-18: 18px;
+    --size-20: 20px;
+    --size-25: 25px;
+    --size-22: min(max(16px, 1.25vw), 22px);
+    --size-24: min(max(18px, 1.25vw), 24px);
+    --size-36: min(max(24px, 1.56vw), 36px);
+    --size-40: min(max(28px, 2.08vw), 38px);
+    --size-49: min(max(39px, 2.55vw), 49px);
+    --white-color: #fff;
+    --black-color: #000;
+    --primary-color: #3d3d3d;
+    --secondary-color: #565656;
+    --color-1: #3d3d3d;
+    --color-2: #CE4194;
+
+
+}
+
+$count: 8;
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Averta-Demo-PE-Cutted-Demo';
+    src: url('../fonts/FontsFree-Net-AvertaDemoPECuttedDemo-Regular.ttf');
+}
+
+html body {
+    font-family: var(--font-family);
+    font-size: var(--size-14);
+    font-weight: 400;
+    color: var(--secondary-color);
+    line-height: inherit;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    padding: var(--top-padding) 0 var(--bottom-padding);
+    min-height: 100vh;
+}
+
+ul,
+li {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0px;
+    margin: 0px;
+    color: var(--black-color);
+}
+
+h3 {
+    font-size: var(--size-40);
+    line-height: var(--size-49);
+}
+
+h4 {
+    font-size: var(--size-18);
+    line-height: var(--size-25);
+}
+
+h5 {
+    font-size: var(--size-16);
+    line-height: var(--size-20);
+}
+
+h6 {
+    font-size: var(--size-16);
+}
+
+p {
+    padding: 0px;
+    margin: 0px;
+}
+
+a {
+    transition: 0.2s all ease;
+    text-decoration: none;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+input,
+button,
+a {
+
+    &:focus,
+    &:focus-visible {
+        outline: unset;
+    }
+}
+
+.inner-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.text-center {
+    text-align: center;
+
+}
+
+.abtn {
+    position: relative;
+    border-radius: 60px;
+    padding: 10px 40px;
+    overflow: hidden;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+    border: unset;
+    background: var(--primary-color);
+    color: var(--white-color);
+
+    &.btn-primary {
+        &:hover {
+            color: #ffffff;
+            box-shadow: 0px 10px 30px 0px #3f3f3f4d;
+
+        }
+    }
+
+    &.w-abtn {
+
+        background-color: var(--white-color);
+        color: var(--primary-color);
+
+        &:hover {
+            box-shadow: 0px 10px 30px 0px #777;
+            color: var(--primary-color);
+
+        }
+    }
+
+    &.width-h {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    span {
+        position: relative;
+        z-index: 1;
+    }
+
+
+    &:hover {
+        color: #ffffff;
+        box-shadow: 0px 10px 30px 0px #3f3f3f4d;
+
+    }
+
+    &.btn-full {
+        width: 100%;
+        height: 45px;
+    }
+
+    &.border-none {
+        border-radius: 5px;
+    }
+}
+
+$color_scooter: #be1e2d;
+$color_batman: #3d3d3d;
+
+
+@function setSonarEffect($numOfRipples, $width, $color) {
+    $value: "0 0 0 #{$width} #{$color}";
+
+    @for $i from 2 through $numOfRipples {
+        $value: "#{$value} , 0 0 0 #{$i * 5}px "+rgba($color, 1 / $i);
+    }
+
+    @return unquote($value);
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow: setSonarEffect(2, 1px, $color_scooter);
+    }
+}
